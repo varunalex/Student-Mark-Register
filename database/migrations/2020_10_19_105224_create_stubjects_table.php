@@ -28,6 +28,6 @@ class CreateStubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stubjects');
+        Schema::dropIfExists('subjects');
     }
 }

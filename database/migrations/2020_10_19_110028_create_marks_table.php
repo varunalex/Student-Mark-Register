@@ -18,8 +18,8 @@ class CreateMarksTable extends Migration
             $table->string('subject');
             $table->string('reg_no');
             $table->integer('grade');
-            $table->integer('term', 3);
-            $table->integer('marks', 3);
+            $table->integer('term');
+            $table->integer('marks');
             $table->timestamps();
         });
     }
