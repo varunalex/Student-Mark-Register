@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SubjectsTable extends Component
+class PackageForm extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class SubjectsTable extends Component
      */
     public function render()
     {
-        return view('components.subjects-table');
+        return view('components.package-form');
     }
 }
