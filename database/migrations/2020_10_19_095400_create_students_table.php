@@ -19,11 +19,13 @@ class CreateStudentsTable extends Migration
             $table->string('l_name', 15);
             $table->string('initials', 100);
             $table->string('reg_no', 10)->unique();
+            $table->string('image', 50)->nullable();
             $table->string('address');
             $table->date('dob');
             $table->enum('gender', ['M', 'F']);
             $table->string('guardian', 100);
-            $table->integer('class');
+            $table->unsignedBigInteger('grade_id');
+            $table->foreign('grade_id')->references('id')->on('grades');
             $table->timestamps();
         });
     }

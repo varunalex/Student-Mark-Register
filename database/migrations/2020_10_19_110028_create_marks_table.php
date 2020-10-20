@@ -15,13 +15,17 @@ class CreateMarksTable extends Migration
     {
         Schema::create('marks', function (Blueprint $table) {
             $table->id();
-            $table->string('subject');
-            $table->string('reg_no');
-            $table->integer('grade');
+            $table->string('subject_code', 10);
+            $table->foreign('subject_code')->references('code')->on('subjects');
+            $table->string('reg_no', 10);
+            $table->foreign('reg_no')->references('code')->on('subjects');
+            $table->unsignedBigInteger('grade_id');
+            $table->foreign('grade_id')->references('id')->on('grades');
             $table->integer('term');
             $table->integer('marks');
             $table->timestamps();
         });
+
     }
 
     /**
