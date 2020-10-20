@@ -10,14 +10,14 @@
             <form method="POST" action="{{ route('subject.store') }}" _lpchecked="1">
                 @csrf
                 <x-package-input id="code" name="code" type="text" max="10" class="mt-1 block w-full"
-                    wire:model.defer="state.name" placeholder="Subject code *">
+                    wire:model.defer="state.name" placeholder="Subject code *" required="required">
                     <x-slot name="message">
                         dsfsf
                     </x-slot>
                 </x-package-input>
 
                 <x-package-input id="subject" name="subject" type="text" max="50" class="mt-1 block w-full"
-                    wire:model.defer="state.name" placeholder="Subject *">
+                    wire:model.defer="state.name" placeholder="Subject *" required="required">
                     <x-slot name="message">
                         dsfsf
                     </x-slot>

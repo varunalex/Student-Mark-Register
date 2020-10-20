@@ -8,7 +8,7 @@
     @endif
     <input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'form-input rounded-md shadow-sm']) !!}
     >
-    {{-- @error($attributes['id']) --}}
+    @error($attributes['id'])
     <p class="{{ $errorClass }} text-sm text-red-600 ml-2">{{ $message }}</p>
-    {{-- @enderror --}}
+    @enderror
 </div>
