@@ -24,3 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Main routes
 Route::get('/subject', 'App\Http\Controllers\SubjectController@index')->name('subject');
 Route::post('/subject/store', 'App\Http\Controllers\SubjectController@store')->name('subject.store');
+Route::get('/subject/create', 'App\Http\Controllers\SubjectController@create')->name('subject.create');
+
+// Livewire
+// Route::livewire('/subject/create', 'add-subject');

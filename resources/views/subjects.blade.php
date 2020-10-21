@@ -5,7 +5,5 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 flex justify-center">
-        @include('subject.form')
-    </div>
+    <a href="{{ route('subject.create') }}">Create a subject</a>
 </x-app-layout>

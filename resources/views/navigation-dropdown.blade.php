@@ -15,9 +15,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('subject') }}" :active="request()->routeIs('subject')">
+                    <x-jet-nav-link href="{{ route('subject') }}"
+                        :active="request()->is('subject/*') || request()->routeIs('subject')">
                         {{ __('Subjects') }}
                     </x-jet-nav-link>
+
                 </div>
             </div>
 
@@ -149,9 +151,11 @@
 
                 <div class="ml-3">
                     {{-- <div class="font-medium text-base text-gray-800">
-                        {{ Auth::user()->name }}</div> --}}
+                        {{ Auth::user()->name }}
+                    </div> --}}
                     {{-- <div class="font-medium text-sm text-gray-500">
-                        {{ Auth::user()->email }}</div> --}}
+                        {{ Auth::user()->email }}
+                    </div> --}}
                 </div>
             </div>
 

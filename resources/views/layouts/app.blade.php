@@ -27,7 +27,18 @@
         <!-- Page Heading -->
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+                <div class="flex items-center">
+                    @if (isset($goTo))
+                        <a href="{{ route(strval($goTo)) }}">
+                            <svg class="w-7 h-7 mr-3 bg-gray-900 p-1 rounded-full text-white cursor-pointer hover:bg-gray-700"
+                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                        </a>
+                    @endif
+                    <h3>{{ $header }}</h3>
+                </div>
             </div>
         </header>
 
@@ -43,6 +54,8 @@
     <script src={{ asset('js/app.js') }}></script>
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
         data-turbolinks-eval="false"></script>
+    @stack('localScripts')
+
 </body>
 
 </html>

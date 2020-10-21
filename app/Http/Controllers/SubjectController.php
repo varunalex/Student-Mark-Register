@@ -8,4 +8,9 @@ class SubjectController extends Controller
     {
         return view('subjects');
     }
+
+    public function create()
+    {
+        return view('subject.create');
+    }
 }
