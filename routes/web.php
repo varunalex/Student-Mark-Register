@@ -26,5 +26,6 @@ Route::get('/subject', 'App\Http\Controllers\SubjectController@index')->name('su
 Route::post('/subject/store', 'App\Http\Controllers\SubjectController@store')->name('subject.store');
 Route::get('/subject/create', 'App\Http\Controllers\SubjectController@create')->name('subject.create');
 
+Route::get('/grade', 'App\Http\Controllers\GradeController@index')->name('grade');
 // Livewire
 // Route::livewire('/subject/create', 'add-subject');
