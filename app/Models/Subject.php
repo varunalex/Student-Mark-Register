@@ -10,4 +10,9 @@ class Subject extends Model
     use HasFactory;
 
     protected $fillable = ['code', 'subject'];
+
+    public function getData()
+    {
+
+    }
 }
