@@ -1,7 +1,7 @@
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
     <div class="flex justify-end">
         <a href="{{ route('subject.create') }}"
-            class="flex items-center py-2 px-4 bg-gray-900 rounded uppercase text-white shadow hover:bg-cool-gray-800">
+            class="flex items-center py-2 px-4 bg-gray-900 rounded-md text-sm uppercase text-white shadow hover:bg-cool-gray-800">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -11,6 +11,12 @@ class SubjectCreate extends Component
     public $subject;
     public $alert;
 
+    // Validation rules
+    protected $rules = [
+        'code' => 'required|string|max:10|unique:subjects,code',
+        'subject' => 'required|string|max:75',
+    ];
+
     /**
      * Prepare the data for validation.
      *
@@ -24,23 +30,12 @@ class SubjectCreate extends Component
         return $attributes;
     }
 
-    // Validation rules
-    protected $rules = [
-        'code' => 'required|string|max:10|unique:subjects,code',
-        'subject' => 'required|string|max:75',
-    ];
-
     public function save()
     {
 
-        $subject = new Subject;
+        $validatedData = $this->validate();
 
-        $this->validate();
-
-        $subject->code = $this->code;
-        $subject->subject = $this->subject;
-
-        $subject->save();
+        Subject::create($validatedData);
 
         // Reset fields
         $this->reset();
