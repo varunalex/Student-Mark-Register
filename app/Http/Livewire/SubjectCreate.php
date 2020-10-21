@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Subject;
 use Livewire\Component;
 
 class SubjectCreate extends Component
@@ -12,22 +13,25 @@ class SubjectCreate extends Component
 
     // Validation rules
     protected $rules = [
-        'code' => 'required|string|max:10',
-        'subject' => 'required|string|max:50',
+        'code' => 'required|string|max:10|unique:subjects,code',
+        'subject' => 'required|string|max:75',
     ];
 
     public function save()
     {
 
+        $subject = new Subject;
+
         $this->validate();
 
-        session()->flash('message', 'Subject created!');
+        $subject->code = strtoupper($this->code);
+        $subject->subject = $this->subject;
 
+        $subject->save();
+
+        // Reset fields
         $this->reset();
-
         $this->alert = true;
-
-        // $this->post->save();
     }
 
     public function resetAlert()
