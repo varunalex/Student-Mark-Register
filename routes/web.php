@@ -23,10 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 // Main routes
 Route::get('/subject', 'App\Http\Controllers\SubjectController@index')->name('subject');
-Route::post('/subject/store', 'App\Http\Controllers\SubjectController@store')->name('subject.store');
 Route::get('/subject/create', 'App\Http\Controllers\SubjectController@create')->name('subject.create');
 Route::get('/subject/{id}/edit', 'App\Http\Controllers\SubjectController@edit')->name('subject.edit')->where('id', '[0-9]+');
 
 Route::get('/grade', 'App\Http\Controllers\GradeController@index')->name('grade');
+Route::get('/grade/create', 'App\Http\Controllers\GradeController@create')->name('grade.create');
 // Livewire
 // Route::livewire('/subject/create', 'add-subject');
