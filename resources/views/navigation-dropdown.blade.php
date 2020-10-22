@@ -12,14 +12,15 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" class="font-bold text-base"
+                        :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('subject') }}"
+                    <x-jet-nav-link href="{{ route('subject') }}" class="font-bold text-base"
                         :active="request()->is('subject/*') || request()->routeIs('subject')">
                         {{ __('Subjects') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('grade') }}"
+                    <x-jet-nav-link href="{{ route('grade') }}" class="font-bold text-base"
                         :active="request()->is('grade/*') || request()->routeIs('grade')">
                         {{ __('Grades') }}
                     </x-jet-nav-link>

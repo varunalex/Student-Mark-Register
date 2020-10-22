@@ -1,7 +1,7 @@
 <div class="py-12 flex justify-center">
     <div class="w-full m-4 lg:w-1/3 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-        <x-package-form action="{{ route('subject.store') }}" method="POST" class="flex flex-col">
+        <x-package-form method="POST" class="flex flex-col">
             <x-slot name="title">
                 {{ __('Edit Subject') }}
             </x-slot>

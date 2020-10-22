@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grade extends Model
 {
-    protected $fillable = ['grade', 'class'];
     use HasFactory;
+
+    protected $fillable = ['grade', 'class'];
+
+    /**
+     * Get the classes for the grade post.
+     */
+    public function classes()
+    {
+        return $this->hasMany('Grade');
+    }
 }
