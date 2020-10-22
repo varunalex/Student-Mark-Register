@@ -17,7 +17,10 @@
                     class="px-6 py-3 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider">
                     Subject Name
                 </th>
-                <th class="px-6 py-3 bg-gray-50"></th>
+                <th
+                    class="px-6 py-3 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wide">
+                    Actions
+                </th>
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
@@ -38,7 +41,7 @@
                     </td>
 
                     <td class="px-6 py-4 whitespace-no-wrap text-right leading-5 font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">
+                        <a href="{{ route('subject.edit', $subject['id']) }}" class="text-indigo-600 hover:text-indigo-900">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -65,5 +68,12 @@
             <!-- More rows... -->
         </tbody>
     </table>
-    {{ $subjects->links() }}
+    <div class="mx-2 text-sm">
+        {{ $subjects->links() }}
+    </div>
+    @if (session()->has('alert'))
+        <x-package-alert-msg on="update" reset="no" class="text-white bg-green-500">
+            Subject Updated 🤙
+        </x-package-alert-msg>
+    @endif
 </div>

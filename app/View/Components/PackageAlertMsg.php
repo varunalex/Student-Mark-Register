@@ -6,15 +6,16 @@ use Illuminate\View\Component;
 
 class PackageAlertMsg extends Component
 {
-    public $on;
+    public $on, $reset;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($on = '')
+    public function __construct($on = '', $reset = 'yes')
     {
         $this->on = $on;
+        $this->reset = $reset;
     }
 
     /**
