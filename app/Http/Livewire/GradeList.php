@@ -25,7 +25,6 @@ class GradeList extends Component
 
     public function render()
     {
-
         return view('livewire.grade-list', [
             'grades' => $this->search ? Grade::where('grade', $this->search)->orWhere('class', strtoupper($this->search))->paginate(10) :
             Grade::orderBy('id', 'desc')->paginate(10),

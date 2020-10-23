@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Grade;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,6 +27,6 @@ class Student extends Model
      */
     public function grade()
     {
-        return $this->hasOne('App\Models\Grade');
+        return $this->belongsTo(Grade::class);
     }
 }
