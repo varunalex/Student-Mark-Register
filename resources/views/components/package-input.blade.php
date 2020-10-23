@@ -1,4 +1,4 @@
-@props(['disabled' => false, 'label', 'errorClass', 'message'])
+@props(['disabled' => false, 'label', 'errorClass', 'message', 'textArea'])
 
 <div class="mb-3">
     @if (!empty($label))
@@ -6,9 +6,16 @@
             {{ $label ?? $slot }}
         </label>
     @endif
-    <input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'form-input rounded-md shadow-sm']) !!}
-    >
-    @error($attributes['id'])
+    @if (!empty($textArea))
+        <textarea {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'form-input rounded-md shadow-sm']) !!}
+            >
+        </textarea>
+    @else
+        <input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge(['class' => 'form-input rounded-md shadow-sm'])
+        !!}
+        >
+    @endif
+    @error($attributes['name'])
     <p class="{{ $errorClass }} text-sm text-red-600 ml-1">{{ $message }}</p>
     @enderror
 </div>

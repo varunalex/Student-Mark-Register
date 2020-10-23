@@ -24,6 +24,10 @@
                         :active="request()->is('grade/*') || request()->routeIs('grade')">
                         {{ __('Grades') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('students') }}" class="font-bold text-base"
+                        :active="request()->is('student/*') || request()->routeIs('students')">
+                        {{ __('Students') }}
+                    </x-jet-nav-link>
 
                 </div>
             </div>

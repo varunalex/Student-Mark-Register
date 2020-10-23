@@ -4,23 +4,23 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class PackageInput extends Component
+class PackageSelect extends Component
 {
     public $message;
     public $errorClass;
     public $label;
-    public $textArea;
+    public $options;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($message = '', $errorClass = '', $label = '', $textArea = '')
+    public function __construct($message = '', $errorClass = '', $label = '', $options = [])
     {
         $this->message = $message;
         $this->errorClass = $errorClass;
         $this->label = $label;
-        $this->textArea = $textArea;
+        $this->options = $options;
     }
 
     /**
@@ -30,6 +30,6 @@ class PackageInput extends Component
      */
     public function render()
     {
-        return view('components.package-input');
+        return view('components.package-select');
     }
 }

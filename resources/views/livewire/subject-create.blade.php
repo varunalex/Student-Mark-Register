@@ -1,7 +1,7 @@
 <div class="py-12 flex justify-center">
     <div class="w-full m-4 lg:w-1/3 bg-white shadow-md overflow-hidden sm:rounded-lg">
 
-        <x-package-form action="{{ route('subject.store') }}" method="POST" class="flex flex-col">
+        <x-package-form class="flex flex-col">
             <x-slot name="title">
                 {{ __('Add a new subject') }}
             </x-slot>
@@ -9,7 +9,7 @@
                 {{ __('* All fields required.') }}
             </x-slot>
             <x-slot name="form">
-                <form method="POST" action="{{ route('subject.store') }}" wire:submit.prevent="save">
+                <form wire:submit.prevent="save">
 
                     @if ($alert)
                         <x-package-alert-msg on="save" class="text-white bg-green-500">

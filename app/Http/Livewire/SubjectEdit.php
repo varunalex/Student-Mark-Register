@@ -18,7 +18,7 @@ class SubjectEdit extends Component
      */
 
     protected $rules = [
-        'code' => 'required|string|max:10|unique:subjects,code',
+        'code' => 'required|string|max:10|alpha_num|unique:subjects,code',
         'subject' => 'required|string|max:75',
     ];
 

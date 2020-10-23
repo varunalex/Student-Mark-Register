@@ -17,7 +17,6 @@
     @livewireStyles
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -52,6 +51,7 @@
 
     @livewireScripts
     <script src={{ asset('js/app.js') }}></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
         data-turbolinks-eval="false"></script>
     @stack('localScripts')
