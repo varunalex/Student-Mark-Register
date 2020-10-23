@@ -18,6 +18,10 @@
                     Class
                 </th>
                 <th
+                    class="px-6 py-3 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                    Students
+                </th>
+                <th
                     class="px-6 py-3 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-500 uppercase tracking-wide">
                     Actions
                 </th>
@@ -44,7 +48,25 @@
 
                         </div>
                     </td>
+                    <td class="px-6 py-4 whitespace-no-wrap">
+                        <div class="flex leading-5 text-gray-900">
+                            {{ $grade->studentCount }}
+                            @if ($grade->studentCount > 0)
+                                <a href="{{ route('grade.edit', $grade->id) }}"
+                                    class="text-red-600 opacity-50 hover:text-red-900 hover:opacity-100">
+                                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            @endif
 
+                        </div>
+                    </td>
                     <td class="px-6 py-4 whitespace-no-wrap text-right leading-5 font-medium">
                         <a href="{{ route('grade.edit', $grade->id) }}" class="text-indigo-600 hover:text-indigo-900">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"

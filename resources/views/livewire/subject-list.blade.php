@@ -29,7 +29,7 @@
                     <td class="px-6 py-4 whitespace-no-wrap">
                         <div class="flex items-center">
                             <div class="leading-5 font-medium text-gray-900">
-                                {{ $loop->index + 1 }}
+                                {{-- {{ $loop->index + 1 }} --}}
                             </div>
                         </div>
                     </td>

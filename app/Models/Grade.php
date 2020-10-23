@@ -11,11 +11,20 @@ class Grade extends Model
 
     protected $fillable = ['grade', 'class'];
 
+    protected $appends = [
+        'studentCount',
+    ];
+
     /**
-     * Get the classes for the grade post.
+     * Get the students for the class.
      */
-    public function classes()
+    public function students()
     {
-        return $this->hasMany('Grade');
+        return $this->hasMany(Student::class, 'grade_id', 'id')->select(array('id'));
+    }
+
+    public function getStudentCountAttribute()
+    {
+        return $this->students->count();
     }
 }
