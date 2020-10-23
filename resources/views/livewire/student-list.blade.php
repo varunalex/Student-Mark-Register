@@ -53,7 +53,8 @@
                                 </path>
                             </svg>
                         </a>
-                        <a href="{{ route('grade.edit', $student->id) }}" class="text-green-600 hover:text-green-900 ml-2">
+                        <a href="{{ route('student.profile', $student->id) }}"
+                            class="text-green-600 hover:text-green-900 ml-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
