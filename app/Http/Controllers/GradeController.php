@@ -17,6 +17,10 @@ class GradeController extends Controller
         $grade_id = $request->id;
         $grade = Grade::where('id', $grade_id)->first();
 
+        if (!$grade) {
+            return abort(404);
+        }
+
         return view('grade.edit', compact('grade_id', 'grade'));
     }
 

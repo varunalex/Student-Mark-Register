@@ -22,6 +22,22 @@ class StudentController extends Controller
         $student_id = $request->id;
         $student = Student::where('id', $student_id)->first();
 
+        if (!$student) {
+            return abort(404);
+        }
+
+        return view('student.edit', compact('student_id', 'student'));
+    }
+
+    public function profile(Request $request)
+    {
+        if (!$student) {
+            return abort(404);
+        }
+
+        $student_id = $request->id;
+        $student = Student::where('id', $student_id)->first();
+
         return view('student.edit', compact('student_id', 'student'));
     }
 }

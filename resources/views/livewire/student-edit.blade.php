@@ -3,7 +3,7 @@
 
         <x-package-form class="flex flex-col">
             <x-slot name="title">
-                {{ __('Add a new student') }}
+                {{ __('Edit student') }}
             </x-slot>
             <x-slot name="description">
                 {{ __('* All fields required.') }}

@@ -17,6 +17,10 @@ class SubjectController extends Controller
         $subject_id = $request->id;
         $subject = Subject::where('id', $subject_id)->first();
 
+        if (!$subject) {
+            return abort(404);
+        }
+
         return view('subject.edit', compact('subject_id', 'subject'));
     }
 
