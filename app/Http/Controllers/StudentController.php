@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use Illuminate\Http\Request;
+
 class StudentController extends Controller
 {
     public function index()
@@ -12,5 +15,13 @@ class StudentController extends Controller
     public function create()
     {
         return view('student.create');
+    }
+
+    public function edit(Request $request)
+    {
+        $student_id = $request->id;
+        $student = Student::where('id', $student_id)->first();
+
+        return view('student.edit', compact('student_id', 'student'));
     }
 }
