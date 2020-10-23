@@ -35,5 +35,8 @@ Route::get('/student/create', 'App\Http\Controllers\StudentController@create')->
 Route::get('/student/{id}/edit', 'App\Http\Controllers\StudentController@edit')->name('student.edit')->where('id', '[0-9]+');
 Route::get('/student/{id}/profile', 'App\Http\Controllers\StudentController@profile')->name('student.profile')->where('id', '[0-9]+');
 
+Route::get('/marks', 'App\Http\Controllers\MarkController@index')->name('marks');
+Route::get('/marks/create', 'App\Http\Controllers\MarkController@create')->name('marks.create');
+Route::get('/marks/{id}/edit', 'App\Http\Controllers\MarkController@edit')->name('marks.edit')->where('id', '[0-9]+');
 // Livewire
 // Route::livewire('/subject/create', 'add-subject');
