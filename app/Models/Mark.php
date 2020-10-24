@@ -16,7 +16,7 @@ class Mark extends Model
 
     public function students()
     {
-        return $this->belongsToMany(Student::class, 'reg_no', 'stu_reg_no');
+        return $this->belongsTo(Student::class, 'reg_no', 'stu_reg_no');
     }
 
     public function subjects()
@@ -26,6 +26,6 @@ class Mark extends Model
 
     public function grades()
     {
-        return $this->belongsToMany(Grade::class, 'grade', 'grade_id');
+        return $this->belongsTo(Grade::class, 'grade', 'grade_id');
     }
 }
