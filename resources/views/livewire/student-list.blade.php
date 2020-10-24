@@ -44,7 +44,8 @@
                         </div>
                     </td>
 
-                    <td class="flex px-6 py-4 whitespace-no-wrap text-right leading-5 font-medium">
+                    <td x-data="deleteConfirmation()"
+                        class="flex px-6 py-4 whitespace-no-wrap text-right leading-5 font-medium">
                         <a href="{{ route('student.edit', $student->id) }}" class="text-indigo-600 hover:text-indigo-900">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -62,6 +63,15 @@
                                 </path>
                             </svg>
                         </a>
+                        <a href="javascript:void(0)" x-on:click="conf('{{ $student->id }}')"
+                            class="text-red-600 hover:text-red-900 ml-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </a>
+
                     </td>
                 </tr>
             @empty
@@ -89,4 +99,24 @@
             Srudent Updated 🤙
         </x-package-alert-msg>
     @endif
+    @if ($alertD)
+        <x-package-alert-msg on="save" class="text-white bg-red-500">
+            Student removed ⛔
+        </x-package-alert-msg>
+    @endif
 </div>
+
+<script>
+    function deleteConfirmation() {
+        return {
+            conf(id) {
+                if (confirm("Are your sure to remove this student? All the related marks will lost.")) {
+                    Livewire.emit('deleteStudent', id);
+                } else {
+                    console.log(false);
+                }
+            }
+        }
+    }
+
+</script>

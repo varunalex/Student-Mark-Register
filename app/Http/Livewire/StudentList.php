@@ -10,7 +10,11 @@ class StudentList extends Component
 {
     use WithPagination;
 
-    public $search, $byGradeId;
+    public $search, $byGradeId, $confirmingStuDeletion, $alertD;
+
+    protected $listeners = [
+        'deleteStudent' => 'deleteStudent',
+    ];
 
     public function updatingSearch($name, $value)
     {
@@ -21,6 +25,14 @@ class StudentList extends Component
     public function mount()
     {
         $this->search = null;
+        $this->confirmingStuDeletion = false;
+        $this->alertD = false;
+    }
+
+    public function deleteStudent($id)
+    {
+        Student::where('id', $id)->delete();
+        $this->alertD = true;
     }
 
     public function render()
@@ -41,5 +53,10 @@ class StudentList extends Component
                 ->orWhere('reg_no', 'like', '%' . $this->search . '%')->paginate(10) :
             Student::orderBy('id', 'desc')->paginate(10),
         ]);
+    }
+
+    public function resetAlert()
+    {
+        $this->alertD = false;
     }
 }
