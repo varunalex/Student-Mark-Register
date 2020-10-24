@@ -22,7 +22,6 @@ class SubjectCreate extends Component
      *
      * @return void
      */
-
     protected function prepareForValidation($attributes)
     {
         $attributes['code'] = $this->sanitizeCode($attributes['code']);

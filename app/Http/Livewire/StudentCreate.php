@@ -12,6 +12,7 @@ class StudentCreate extends Component
     public $student;
     public $alert, $genders, $grades;
 
+    // Validation rules
     protected $rules = [
         'student.f_name' => 'required|string|max:15',
         'student.l_name' => 'required|string|max:15',
@@ -36,6 +37,7 @@ class StudentCreate extends Component
         'student.grade_id' => 'grade & class',
     ];
 
+    // Custom validation messages
     protected $messages = [
         'student.gender.max' => 'The gender is required',
         'student.grade_id.integer' => 'The grade & class is required',

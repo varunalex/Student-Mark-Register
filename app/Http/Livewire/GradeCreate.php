@@ -10,14 +10,11 @@ class GradeCreate extends Component
 {
     public $grade, $class, $alert;
 
-    // Validation rules
-
     /**
      * Prepare the data for validation.
      *
      * @return void
      */
-
     protected function prepareForValidation($attributes)
     {
         $attributes['class'] = $this->sanitizeCode($attributes['class']);

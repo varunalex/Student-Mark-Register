@@ -14,20 +14,18 @@ class MarksCreate extends Component
     public $alert, $alertMsg, $searchReg, $searchGrade, $searchSub, $students, $grades, $subjects;
     public $terms, $term, $marks;
 
+    // Event listeners
     protected $listeners = [
         'setRegNo' => 'setRegNo',
         'setGrade' => 'setGrade',
         'setSub' => 'setSub',
     ];
 
+    // Rename validation attributes
     protected $validationAttributes = [
         'searchReg' => 'registration number',
         'searchGrade' => 'class',
         'searchSub' => 'subject',
-    ];
-
-    protected $messages = [
-
     ];
 
     public function mount()
@@ -57,6 +55,7 @@ class MarksCreate extends Component
 
         $gradeId = Grade::getGradeId($this->explodeSearch($validatedData['searchGrade']))->id;
 
+        // Restructuring validated data
         $data = [
             'stu_reg_no' => $validatedData['searchReg'],
             'subject_code' => $validatedData['searchSub'],
@@ -72,6 +71,7 @@ class MarksCreate extends Component
             ['term', '=', $validatedData['term']],
         ]);
 
+        // Update marks if record already exist
         if (!$exist->get()->count()) {
             Mark::create($data);
             $this->alertMsg = "Record Added 🤙";
@@ -113,6 +113,7 @@ class MarksCreate extends Component
         }
     }
 
+    // Event listeners - Start
     public function setRegNo($value)
     {
         $this->searchReg = $value;
@@ -127,12 +128,19 @@ class MarksCreate extends Component
     {
         $this->searchSub = $value;
     }
+    // Event listeners - end
 
     public function render()
     {
         return view('livewire.marks-create');
     }
 
+    /**
+     * Explode 10-C (class) to [10m 'C']
+     *
+     * @param string $query
+     * @return array
+     */
     private function explodeSearch($query)
     {
         $arr = [$query, ''];

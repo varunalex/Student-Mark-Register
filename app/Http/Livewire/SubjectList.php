@@ -25,7 +25,9 @@ class SubjectList extends Component
     public function render()
     {
         return view('livewire.subject-list', [
-            'subjects' => $this->search ? Subject::where('code', 'like', '%' . $this->search . '%')->orWhere('subject', 'like', '%' . $this->search . '%')->paginate(10) :
+            'subjects' => $this->search ? Subject::where('code', 'like', '%' . $this->search . '%')
+                ->orWhere('subject', 'like', '%' . $this->search . '%')
+                ->paginate(10) :
             Subject::orderBy('id', 'desc')->paginate(10),
         ]);
     }

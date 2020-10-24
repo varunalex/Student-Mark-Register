@@ -17,7 +17,6 @@ class GradeEdit extends Component
      *
      * @return void
      */
-
     protected function prepareForValidation($attributes)
     {
         $attributes['class'] = $this->sanitizeCode($attributes['class']);

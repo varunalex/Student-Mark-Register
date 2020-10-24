@@ -13,11 +13,13 @@ class MarksView extends Component
     public $results, $searchReg, $searchGrade, $terms, $term;
     public $students, $grades;
 
+    // Event listeners
     protected $listeners = [
         'setRegNo' => 'setRegNo',
         'setGrade' => 'setGrade',
     ];
 
+    // Rename validation attributes
     protected $validationAttributes = [
         'searchReg' => 'registration number',
         'searchGrade' => 'class',
@@ -41,12 +43,6 @@ class MarksView extends Component
             'searchGrade' => ['required', 'string', 'alpha_dash', new HasClass],
             'term' => ['required', 'string', 'min:1'],
         ]);
-
-        // $result = Mark::where([
-        //     ['stu_reg_no', '=', $validatedData['searchReg']],
-        //     ['grade_id', '=', $validatedData['searchGrade']],
-        //     ['term', '=', $validatedData['term']],
-        // ])->get();
 
         $gradeId = Grade::getGradeId($this->explodeSearch($validatedData['searchGrade']))->id;
 
@@ -94,6 +90,12 @@ class MarksView extends Component
         $this->searchGrade = $value;
     }
 
+    /**
+     * Explode 10-C (class) to [10m 'C']
+     *
+     * @param string $query
+     * @return array
+     */
     private function explodeSearch($query)
     {
         $arr = [$query, ''];

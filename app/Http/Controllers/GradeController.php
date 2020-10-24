@@ -17,6 +17,10 @@ class GradeController extends Controller
         return view('grade.create');
     }
 
+    /**
+     * @param Request $request->id
+     * @return void
+     */
     public function edit(Request $request)
     {
         $grade_id = $request->id;

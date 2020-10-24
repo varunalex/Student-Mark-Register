@@ -17,6 +17,10 @@ class SubjectController extends Controller
         return view('subjects');
     }
 
+    /**
+     * @param Request $request->id
+     * @return void
+     */
     public function edit(Request $request)
     {
         $subject_id = $request->id;

@@ -11,17 +11,16 @@ class SubjectEdit extends Component
     public $subject;
     public $subject_id;
 
-    /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-
     protected $rules = [
         'code' => 'required|string|max:10|alpha_num|unique:subjects,code',
         'subject' => 'required|string|max:75',
     ];
 
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
     protected function prepareForValidation($attributes)
     {
         $attributes['code'] = $this->sanitizeCode($attributes['code']);

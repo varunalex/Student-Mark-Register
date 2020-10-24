@@ -35,6 +35,7 @@ class StudentEdit extends Component
         'student.grade_id' => 'grade & class',
     ];
 
+    // Custom validation messages
     protected $messages = [
         'student.gender.max' => 'The gender is required',
         'student.grade_id.integer' => 'The grade & class is required',

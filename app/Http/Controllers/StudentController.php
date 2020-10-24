@@ -13,6 +13,11 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Show all students and filter by grade
+     * @param Request $request->gradeId (optional)
+     * @return void
+     */
     public function index(Request $request)
     {
         $byGradeId = null;
@@ -27,6 +32,10 @@ class StudentController extends Controller
         return view('student.create');
     }
 
+    /**
+     * @param Request $request->id
+     * @return void
+     */
     public function edit(Request $request)
     {
         $student_id = $request->id;
@@ -39,6 +48,11 @@ class StudentController extends Controller
         return view('student.edit', compact('student_id', 'student'));
     }
 
+    /**
+     * Render student profile page
+     * @param Request $request->id
+     * @return void
+     */
     public function profile(Request $request)
     {
         $student_id = $request->id;
