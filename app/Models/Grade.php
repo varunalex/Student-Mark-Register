@@ -27,4 +27,23 @@ class Grade extends Model
     {
         return $this->students->count();
     }
+
+    /**
+     * return grades and classes
+     *
+     * @param [array] $query
+     * @param integer $limit
+     * @return Object
+     */
+    public static function searchGrades($query, $limit = 10)
+    {
+        return Grade::select('id', 'grade', 'class')->where('grade', 'like', '%' . $query[0] . '%')
+            ->where('class', 'like', '%' . $query[1] . '%')->limit($limit)->get();
+    }
+
+    public static function getGradeId($query)
+    {
+        return Grade::select('id', 'grade', 'class')->where('grade', $query[0])
+            ->where('class', $query[1])->first();
+    }
 }

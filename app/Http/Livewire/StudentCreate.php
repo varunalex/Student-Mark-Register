@@ -55,7 +55,7 @@ class StudentCreate extends Component
     public function save()
     {
         $validatedData = $this->validate();
-
+        $validatedData['student']['reg_no'] = strtoupper($validatedData['student']['reg_no']);
         Student::create($validatedData['student']);
 
         // Reset fields

@@ -11,8 +11,15 @@ class Subject extends Model
 
     protected $fillable = ['code', 'subject'];
 
-    public function getData()
+    /**
+     * search subjects by code
+     *
+     * @param [mix] $query
+     * @param integer $limit
+     * @return Object
+     */
+    public static function searchSubjects($query, $limit = 10)
     {
-
+        return Subject::select('id', 'code')->where('code', 'like', '%' . $query . '%')->limit($limit)->get();
     }
 }

@@ -29,4 +29,16 @@ class Student extends Model
     {
         return $this->belongsTo(Grade::class, 'grade_id', 'id');
     }
+
+    /**
+     * search students by reg no
+     *
+     * @param [mix] $query
+     * @param integer $limit
+     * @return Object
+     */
+    public static function searchStudents($query, $limit = 10)
+    {
+        return Student::select('id', 'reg_no')->where('reg_no', 'like', '%' . $query . '%')->limit($limit)->get();
+    }
 }

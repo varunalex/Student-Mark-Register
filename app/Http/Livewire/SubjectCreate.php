@@ -13,7 +13,7 @@ class SubjectCreate extends Component
 
     // Validation rules
     protected $rules = [
-        'code' => 'required|string|max:10|alpha_num|unique:subjects,code',
+        'code' => 'required|string|max:10|alpha_dash|unique:subjects,code',
         'subject' => 'required|string|max:75',
     ];
 
