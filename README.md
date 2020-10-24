@@ -26,3 +26,5 @@ Default logins:
 
 -   Email: `smradmin@gmail.com`
 -   Password: `password`
+
+![enter image description here](https://i.ibb.co/DgZddpJ/Student-Marks-Register.png)
