@@ -30,7 +30,7 @@ Route::get('/grade', 'App\Http\Controllers\GradeController@index')->name('grade'
 Route::get('/grade/create', 'App\Http\Controllers\GradeController@create')->name('grade.create');
 Route::get('/grade/{id}/edit', 'App\Http\Controllers\GradeController@edit')->name('grade.edit')->where('id', '[0-9]+');
 
-Route::get('/students', 'App\Http\Controllers\StudentController@index')->name('students');
+Route::get('/students/{gradeId?}', 'App\Http\Controllers\StudentController@index')->name('students');
 Route::get('/student/create', 'App\Http\Controllers\StudentController@create')->name('student.create');
 Route::get('/student/{id}/edit', 'App\Http\Controllers\StudentController@edit')->name('student.edit')->where('id', '[0-9]+');
 Route::get('/student/{id}/profile', 'App\Http\Controllers\StudentController@profile')->name('student.profile')->where('id', '[0-9]+');

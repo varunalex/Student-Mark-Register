@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('students');
+        $byGradeId = null;
+        if (isset($request->gradeId)) {
+            $byGradeId = $request->gradeId;
+        }
+        return view('students', compact('byGradeId'));
     }
 
     public function create()
