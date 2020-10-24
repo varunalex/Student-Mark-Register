@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 
 // Main routes
 Route::get('/subject', 'App\Http\Controllers\SubjectController@index')->name('subject');
