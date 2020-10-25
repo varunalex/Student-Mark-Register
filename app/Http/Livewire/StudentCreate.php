@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Grade;
 use App\Models\Student;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class StudentCreate extends Component
 {
+    use WithFileUploads;
 
-    public $student;
+    public $student, $photo;
     public $alert, $genders, $grades;
 
     // Validation rules
@@ -19,6 +21,7 @@ class StudentCreate extends Component
         'student.initials' => 'required|string|max:15',
         'student.reg_no' => 'required|string|max:10|alpha_dash|unique:students,reg_no',
         'student.address' => 'required|string|max:255',
+        // 'photo' => 'image|max:1024',
         'student.dob' => 'required|date',
         'student.gender' => 'required|string|max:1',
         'student.guardian' => 'required|string|max:100',
@@ -31,6 +34,7 @@ class StudentCreate extends Component
         'student.initials' => 'initials',
         'student.reg_no' => 'registration number',
         'student.address' => 'address',
+        // 'photo' => 'image',
         'student.dob' => 'date of birth',
         'student.gender' => 'gender',
         'student.guardian' => 'guardian',
@@ -59,6 +63,8 @@ class StudentCreate extends Component
         $validatedData = $this->validate();
         $validatedData['student']['reg_no'] = strtoupper($validatedData['student']['reg_no']);
         Student::create($validatedData['student']);
+        // dd($this->photo->filename);
+        // $this->photo->store('photos');
 
         // Reset fields
         $this->student = [];
