@@ -112,28 +112,33 @@
             </div>
         </div>
     </form>
-    <div class="w-2/3 m-4 bg-white shadow-md overflow-visible sm:rounded-lg pb-12" id="printMe">
+    <div class="w-2/3 m-4 bg-white shadow-md overflow-visible sm:rounded-lg pb-12" id="printMe"
+        style="width: 66.666667%; padding-bottom: 3rem;">
 
         @if (isset($results[0]->initials))
 
-            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                <div class="flex items-center justify-between px-4 py-5 border-b border-gray-200 sm:px-6">
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg"
+                style="box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);">
+                <div class="flex items-center justify-between px-4 py-5 border-b border-gray-200 sm:px-6" style="display: flex; align-items: center; justify-content: space-between; padding-left: 1rem;
+                padding-right: 1rem; border-bottom-width: 1px; border-color: #e5e7eb;">
                     <div>
-                        <h3 class="text-lg leading-6 font-bold text-gray-900">
+                        <h3 class="text-lg leading-6 font-bold text-gray-900"
+                            style="font-size: 1.125rem; line-height: 1.5rem; font-weight: 700; color: #161e2e;">
                             @if (is_array($results))
                                 {{ $results[0]->initials . ' ' . $results[0]->f_name . ' ' . $results[0]->l_name }}
                             @else
                                 Results not found!
                             @endif
                         </h3>
-                        <p class="mt-1 max-w-2xl text-base leading-5 text-gray-500">
+                        <p class="mt-1 max-w-2xl text-base leading-5 text-gray-500"
+                            style=" margin-top: 0.25rem;max-width: 42rem;font-size: 1rem; line-height: 1.25rem;color: #6b7280;">
                             @if (count($results) > -1)
                                 Term: {{ $term }} ({{ $searchGrade }})
                             @endif
                         </p>
                     </div>
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="w-7 h-7" style="width: width: 1.75rem; height: 1.75rem;" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
                         <path
                             d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
@@ -148,31 +153,59 @@
                         @php
                         $sum = 0;
                         @endphp
+                        <script>
+                            window.printData = [];
+
+                        </script>
                         @foreach ($results as $item)
                             @php
                             $sum = $sum + $item->marks;
                             @endphp
                             @if ($loop->index % 2 == 0)
-                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+                                    style="background-color: #f9fafb; padding-left: 1rem;padding-right: 1rem;padding-bottom: 1.25rem;padding-bottom: 1.25rem;">
                                     <dt class="leading-5 text-gray-500">
                                         {{ $item->subject }}
                                     </dt>
-                                    <dd class="mt-1 leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                                    <dd class="mt-1 leading-5 text-gray-900 sm:mt-0 sm:col-span-2"
+                                        style="margin-top: 0.25rem;line-height: 1.25rem;color: #161e2e;">
                                         {{ $item->marks }}
                                     </dd>
                                 </div>
                             @else
-                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="leading-5 text-gray-500">
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
+                                    style="background-color: #ffffff;padding-left: 1rem;padding-right: 1rem;padding-top: 1.25rem;padding-bottom: 1.25rem;">
+                                    <dt class="leading-5 text-gray-500" style="line-height: 1.25rem;color: #6b7280;">
                                         {{ $item->subject }}
                                     </dt>
-                                    <dd class="mt-1 leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+                                    <dd class="mt-1 leading-5 text-gray-900 sm:mt-0 sm:col-span-2"
+                                        style="margin-top: 0.25rem;line-height: 1.25rem;color: #161e2e;">
                                         {{ $item->marks }}
                                     </dd>
                                 </div>
                             @endif
-                        @endforeach
+                            <script>
+                                window.printData.push({
+                                    subject: '{{ $item->subject }}',
+                                    score: '{{ $item->marks }}',
+                                    _: ''
+                                });
 
+                            </script>
+                        @endforeach
+                        <script>
+                            window.printData.push({
+                                subject: 'Total Marks',
+                                score: '',
+                                _: '{{ $sum }}'
+                            });
+                            window.printData.push({
+                                subject: 'Average',
+                                score: '',
+                                _: '{{ round($sum / count($results), 2) }}'
+                            });
+
+                        </script>
                         <div class="bg-gray-300 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="leading-5 text-gray-900 font-bold">
                                 Total Marks
@@ -200,7 +233,8 @@
                             </p>
                         </div>
                         <div>
-                            <button onclick="printDiv('printMe')"
+                            <button
+                                onclick="printJS({printable: window.printData, properties: ['subject', 'score', '_'], header: '<h3>{{ $results[0]->initials . ' ' . $results[0]->f_name . ' ' . $results[0]->l_name }} <br> Term: {{ $term }} ({{ $searchGrade }})</h3>', type: 'json'})"
                                 class="flex items-center py-2 px-4 bg-gray-900 rounded-md text-sm uppercase text-white shadow hover:bg-cool-gray-800">
                                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -291,16 +325,20 @@
         }
     }
 
-    function printDiv(divName) {
-        var printContents = document.getElementById(divName).innerHTML;
-        var originalContents = document.body.innerHTML;
-
-        document.body.innerHTML = printContents;
-
-        window.print();
-
-        document.body.innerHTML = originalContents;
+    function fetchPrint(data) {
 
     }
+    // function printDiv(divName) {
+    //     var printContents = document.getElementById(divName).innerHTML;
+    //     var originalContents = document.body.innerHTML;
+
+    //     document.body.innerHTML = printContents;
+
+    //     window.print();
+
+    //     document.body.innerHTML = originalContents;
+
+    // }
 
 </script>
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>

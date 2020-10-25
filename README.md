@@ -1,6 +1,6 @@
 # Student Marks Register Lite
 
-Simple buy useful application to keep track on student's examination marks. This application is developed with ❤ Laravel + Livewire + AlpineJs + TailwindCSS.
+Simple but useful application to keep track on student's examination marks. This application is developed with ❤ Laravel + Livewire + AlpineJs + TailwindCSS.
 
 ## Requirements
 
